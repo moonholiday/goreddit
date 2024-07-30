@@ -2,7 +2,6 @@ package postgres
 
 import (
 	"fmt"
-
 	"github.com/google/uuid"
 	"github.com/jmoiron/sqlx"
 	"github.com/moonholiday/goreddit"

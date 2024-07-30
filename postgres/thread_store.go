@@ -2,7 +2,6 @@ package postgres
 
 import (
 	"fmt"
-
 	"github.com/google/uuid"
 	"github.com/jmoiron/sqlx"
 	"github.com/moonholiday/goreddit"
@@ -25,7 +24,7 @@ func (s *ThreadStore) Thread(id uuid.UUID) (goreddit.Thread, error) {
 	}
 	return t, nil
 }
-func (s *ThreadStore) Threads(id uuid.UUID) ([]goreddit.Thread, error) {
+func (s *ThreadStore) Threads() ([]goreddit.Thread, error) {
 	var tt []goreddit.Thread
 	if err := s.Select(&tt, `SELECT * FROM threads`); err != nil {
 		return []goreddit.Thread{}, fmt.Errorf("error gettings threads: %w", err)
