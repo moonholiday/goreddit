@@ -1,6 +1,6 @@
 .PHONY = postgres adminer migrate
 
-postgres:
+db:
 	docker run --rm -ti --network host -e POSTGRES_PASSWORD=${POSTGRES_PASSWORD} postgres
 
 adminer:
@@ -9,3 +9,5 @@ adminer:
 migrate:
 	migrate -source file://migrations -database postgres://postgres:${POSTGRES_PASSWORD}@localhost/postgres?sslmode=disable up
 
+migrate-down:
+	migrate -source file://migrations -database postgres://postgres:${POSTGRES_PASSWORD}@localhost/postgres?sslmode=disable down
